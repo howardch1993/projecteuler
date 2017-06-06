@@ -11,24 +11,20 @@ f2 <- function(a,...) {
   if (a > 0) b = a + f1(a)
   b
 }
-f3 <- function(n = 0,an = 0,t,...) {
-  a = Sys.time()
-  if (t == 0) { 
-      b = Sys.time()
-      print(b - a)
-      return(f2(t))
-  }
-  if (t > 0) {
-    while (n < t) {
-      cat(n,"\t",{if(n==0) 1 else an},"\n")
-      an = f2(an)
-      n = n + 1
+f3 <- function(init_n = 1,init_num = 1,steps,...) {
+    if (init_num >= 1) {
+        f = init_num
+        while (steps > 0) {
+            cat("a",init_n," = ",f,"\n",sep = "")
+            f = f2(f)
+            init_n = init_n + 1
+            steps = steps - 1
+        }
+        cat("a",init_n," = ",f,"\n",sep = "")
+        return(f)
+    } else if (init_num < 1) {
+        cat("a0 = 1, LOL!\n")
     }
-    cat(n,"\t",an,"\n")
-    b = Sys.time()
-    print(b - a)
-    return(an)
-  }
 }
 options(scipen = 200)
 target = 10^15
