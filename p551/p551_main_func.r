@@ -16,7 +16,6 @@ f3 <- function(init_n = 1,init_num = 1,steps,...) {
     if (init_num >= 1) {
         f = init_num
         while (steps > 0) {
-            cat("a",init_n," = ",f,"\n",sep = "")
             f = f2(f)
             init_n = init_n + 1
             steps = steps - 1
